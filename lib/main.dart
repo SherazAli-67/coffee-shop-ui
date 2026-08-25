@@ -1,3 +1,5 @@
+import 'package:coffee_app/constants/string_const.dart';
+import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: StringConst.appTitle,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        brightness: .light,
+        scaffoldBackgroundColor: Colors.white
       ),
-      home: Scaffold(body: Center(child: Text("Coffee Shop App"),),)
+      builder: (ctx, child) => child!,
+      routerConfig: router,
     );
   }
 }
