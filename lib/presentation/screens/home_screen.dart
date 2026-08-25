@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(child: GridView.builder(
               itemCount: AppData.coffeesList.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15, childAspectRatio: 0.75), itemBuilder: (ctx, index)=> CoffeeItemWidget(coffee: AppData.coffeesList[index])))
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15, childAspectRatio: 0.64 ), itemBuilder: (ctx, index)=> CoffeeItemWidget(coffee: AppData.coffeesList[index])))
         ],
       ),
     );

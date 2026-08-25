@@ -18,35 +18,39 @@ class CoffeeItemWidget extends StatelessWidget{
       padding: .all(8),
       child: Column(
         spacing: 8,
+        crossAxisAlignment: .start,
         children: [
-          Expanded(child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: .circular(12),
-                child: Image.asset(coffee.coffee, fit: .cover,),
-              ),
-
-              Positioned(
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: AppGradients.blackSmokeGradient,
-                    borderRadius: .only(topLeft: .circular(0), topRight: .circular(12), bottomRight: .circular(0), bottomLeft: .circular(24))
-                  ),
-                  padding: .symmetric(horizontal: 14, vertical: 8),
-                  alignment: .topEnd,
-                  child: Row(
-                    mainAxisSize: .min,
-                    spacing: 5,
-                    mainAxisAlignment: .end,
-                    children: [
-                      Icon(Icons.star, color: AppColors.ratingYellowColor, size: 10,),
-                      Text('${coffee.rating}', style: AppTextStyles.regularTextStyle.copyWith(fontSize: 8, fontWeight: .w600, color: Colors.white),)
-                    ],
-                  ),
+          Expanded(child: Align(
+            alignment: .center,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: .circular(12),
+                  child: Image.asset(coffee.coffee, fit: .cover,),
                 ),
-              )
-            ],
+
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: AppGradients.blackSmokeGradient,
+                      borderRadius: .only(topLeft: .circular(0), topRight: .circular(12), bottomRight: .circular(0), bottomLeft: .circular(24))
+                    ),
+                    padding: .symmetric(horizontal: 14, vertical: 8),
+                    alignment: .topEnd,
+                    child: Row(
+                      mainAxisSize: .min,
+                      spacing: 5,
+                      mainAxisAlignment: .end,
+                      children: [
+                        Icon(Icons.star, color: AppColors.ratingYellowColor, size: 10,),
+                        Text('${coffee.rating}', style: AppTextStyles.regularTextStyle.copyWith(fontSize: 8, fontWeight: .w600, color: Colors.white),)
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           )),
           Column(
             crossAxisAlignment: .start,
