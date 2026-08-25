@@ -1,7 +1,9 @@
 import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/app_textstyles.dart';
+import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/primary_btn.dart';
 
@@ -46,7 +48,7 @@ class WelcomeScreen extends StatelessWidget{
                 ),
                 SizedBox(
                   width: .infinity,
-                  child: PrimaryBtn(btnText: 'Get Started',),
+                  child: PrimaryBtn(btnText: 'Get Started', onTap: ()=> context.push(NamedRoutes.home.routeName),),
                 )
               ],
             ),
