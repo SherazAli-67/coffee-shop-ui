@@ -4,6 +4,10 @@ class AppIcons {
   //pngs
   static const welcomeImg = '${_iconsPath}welcome_img.png';
   static const promoBanner = '${_iconsPath}promo_banner.png';
+  static const coffee1 = '${_iconsPath}coffe_1.png';
+  static const coffee2 = '${_iconsPath}coffe_2.png';
+  static const coffee3 = '${_iconsPath}coffe_3.png';
+  static const coffee4 = '${_iconsPath}coffe_4.png';
 
   //svgs
   static const icHome = '${_iconsPath}ic_home.svg';

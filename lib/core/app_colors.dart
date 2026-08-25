@@ -8,4 +8,7 @@ class AppColors {
   static const gradientBlackColor1 = Color(0xff111111);
   static const gradientBlackColor2 = Color(0xff313131);
   static const promoRedColor = Color(0xffED5151);
+  static const lightWhiteColor = Color(0xffEDEDED);
+  static const ratingYellowColor = Color(0xffFBBE21);
+  static const scaffoldBgColor = Color(0xffF9F9F9);
 }

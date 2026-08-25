@@ -1,4 +1,5 @@
 import 'package:coffee_app/constants/string_const.dart';
+import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: StringConst.appTitle,
       theme: ThemeData(
         brightness: .light,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: AppColors.scaffoldBgColor,
         fontFamily: StringConst.appFontFamily
       ),
       builder: (ctx, child) => child!,

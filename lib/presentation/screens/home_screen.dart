@@ -1,6 +1,9 @@
 import 'package:coffee_app/core/app_colors.dart';
+import 'package:coffee_app/core/app_data.dart';
+import 'package:coffee_app/core/app_gradients.dart';
 import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/app_textstyles.dart';
+import 'package:coffee_app/presentation/widgets/coffee_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         ),
         Expanded(
             flex: 3,
-            child: Container(color: Colors.white)),
+            child: _buildContentWidget()),
       ],
     );
   }
@@ -49,18 +52,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Expanded(child: Container(
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [
-                                AppColors.gradientBlackColor1,
-                                AppColors.gradientBlackColor2,
-                              ],
-                              stops: [
-                                0.0,
-                                1.0
-                              ],
-                              begin: .topLeft,
-                              end: .topRight
-                          ),
+                          gradient: AppGradients.blackSmokeGradient,
                         borderRadius: .circular(12)
                       ),
                       child: TextField(
@@ -98,6 +90,41 @@ class HomeScreen extends StatelessWidget {
           child: Image.asset(AppIcons.promoBanner),
         ),
       ],
+    );
+  }
+
+  Widget _buildContentWidget() {
+    return Padding(
+      padding: const .all(24.0),
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          SizedBox(
+            height: 30,
+            child: ListView.separated(
+                scrollDirection: .horizontal,
+                itemBuilder: (_, index)=> _buildCategoryItemWidget(category: AppData.categoriesList[index], isSelected: index == 0, onTap: (){}), separatorBuilder: (_, _) => const SizedBox(width: 16,), itemCount: AppData.categoriesList.length),
+          ),
+          Expanded(child: GridView.builder(
+              itemCount: AppData.coffeesList.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15, childAspectRatio: 0.75), itemBuilder: (ctx, index)=> CoffeeItemWidget(coffee: AppData.coffeesList[index])))
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoryItemWidget({required String category, required bool isSelected, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: .circular(6),
+            color: isSelected ? AppColors.primaryColor : AppColors.lightWhiteColor.withValues(alpha: 0.35)
+        ),
+        padding: .symmetric(horizontal: 8, vertical: 4,),
+        alignment: .center,
+        child: Text(category, style: AppTextStyles.regularTextStyle.copyWith(color: isSelected ? Colors.white : AppColors.gradientBlackColor2, fontWeight: isSelected ? .w600 : .w400),),
+      ),
     );
   }
 }
