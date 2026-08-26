@@ -1,3 +1,5 @@
+import 'package:coffee_app/constants/string_const.dart';
+import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/app_textstyles.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
@@ -15,6 +17,7 @@ class CoffeeDetailScreen extends StatelessWidget{
         padding: const .all(24.0),
         child: Column(
           spacing: 16,
+          crossAxisAlignment: .start,
           children: [
             Row(
               mainAxisAlignment: .spaceBetween,
@@ -35,10 +38,89 @@ class CoffeeDetailScreen extends StatelessWidget{
                       child: Image.asset(coffee.coffee, fit: .cover,)),
                 ),
               ),
-            )
+            ),
+            Row(
+              children: [
+                Expanded(child: Column(
+                  spacing: 16,
+                  crossAxisAlignment: .start,
+                  children: [
+                    Column(
+                      spacing: 4,
+                      crossAxisAlignment: .start,
+                      children: [
+                        Text(coffee.title, style: AppTextStyles.btnTextStyle.copyWith(fontSize: 20),),
+                        Text(coffee.subtitle, style: AppTextStyles.regularTextStyle.copyWith(fontSize: 12, color: AppColors.greyColor),),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star_rate_rounded, color: AppColors.ratingYellowColor, size: 20
+                            ),
+                            RichText(text: TextSpan(
+                              text: '${coffee.rating} ',
+                              style: AppTextStyles.btnTextStyle.copyWith(fontFamily: StringConst.appFontFamily, color: AppColors.blackColor),
+                              children: [
+                                TextSpan(
+                                  text: '(230)',
+                                  style: AppTextStyles.regularTextStyle.copyWith(fontSize: 12, color: AppColors.greyColor, fontFamily: StringConst.appFontFamily)
+                                )
+                              ]
+                            ))
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                )),
+                Expanded(child: Row(
+                  spacing: 12,
+                  children: [
+                    _buildDetailIconWidget(icon: AppIcons.icRider),
+                    _buildDetailIconWidget(icon: AppIcons.icCoffeeBean),
+                    _buildDetailIconWidget(icon: AppIcons.icCoffeePackage),
+                  ],
+                ))
+              ],
+            ),
+            Divider(color: AppColors.lightWhiteColor,),
+            Column(
+              crossAxisAlignment: .start,
+              spacing: 8,
+              children: [
+                Text("Description", style: AppTextStyles.btnTextStyle,),
+                RichText(text: TextSpan(
+                  text: StringConst.coffeeDescription,
+                  style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.greyColor, fontFamily: StringConst.appFontFamily, height: 1.5),
+                  children: [
+                    TextSpan(
+                        text: 'Read More',
+                        style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.primaryColor, fontWeight: .w600, fontFamily: StringConst.appFontFamily, height: 1.5)
+                    )
+                  ]
+                ))
+              ],
+            ),
+            Padding(padding: .only(top: 8), child: Column(
+              crossAxisAlignment: .start,
+              spacing: 16,
+              children: [
+                Text("Size", style: AppTextStyles.btnTextStyle,)
+              ],
+            ),)
           ],
         ),
       )),
+    );
+  }
+
+  Widget _buildDetailIconWidget({required String icon}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColors.lightWhiteColor.withValues(alpha: 0.35),
+          borderRadius: .circular(12)
+      ),
+      padding: .all(6),
+      child: Image.asset(icon, height: 30, width: 30),
     );
   }
 }

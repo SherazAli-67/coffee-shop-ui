@@ -2,7 +2,6 @@ import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/core/app_gradients.dart';
 import 'package:coffee_app/core/app_textstyles.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
-import 'package:coffee_app/presentation/screens/coffee_detail_screen.dart';
 import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +14,6 @@ class CoffeeItemWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ()=> context.push(NamedRoutes.coffeeDetail.routeName, extra: coffee),
-      // onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> CoffeeDetailScreen(coffee: coffee))),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -30,12 +28,11 @@ class CoffeeItemWidget extends StatelessWidget{
               alignment: .center,
               child: Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: .circular(12),
-                    child: Hero(
-                        tag: coffee.id,
-                        child: Image.asset(coffee.coffee, fit: .cover,)),
-                  ),
+                  Hero(
+                      tag: coffee.id,
+                      child: ClipRRect(
+                          borderRadius: .circular(12),
+                          child: Image.asset(coffee.coffee, fit: .cover,))),
 
                   Positioned(
                     right: 0,

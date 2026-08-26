@@ -8,6 +8,9 @@ class AppIcons {
   static const coffee2 = '${_iconsPath}coffe_2.png';
   static const coffee3 = '${_iconsPath}coffe_3.png';
   static const coffee4 = '${_iconsPath}coffe_4.png';
+  static const icRider = '${_iconsPath}ic_rider.png';
+  static const icCoffeeBean = '${_iconsPath}ic_coffee_bean.png';
+  static const icCoffeePackage = '${_iconsPath}ic_coffee_package.png';
 
   //svgs
   static const icHome = '${_iconsPath}ic_home.svg';
