@@ -1,7 +1,9 @@
 import 'package:coffee_app/core/app_colors.dart';
+import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
 import 'package:coffee_app/providers/order_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/app_textstyles.dart';
@@ -48,6 +50,29 @@ class OrderScreen extends StatelessWidget {
 
                           ],
                         ),
+                      ),
+                      Column(
+                        crossAxisAlignment: .start,
+                        spacing: 16,
+                        children: [
+                          Text("Delivery Address", style: AppTextStyles.btnTextStyle,),
+                          Column(
+                            crossAxisAlignment: .start,
+                            spacing: 4,
+                            children: [
+                              Text("Sheraz Ali", style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
+                              Text("Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.greyColor),)
+                            ],
+                          ),
+                          Row(
+                            spacing: 8,
+                            children: [
+                              _buildAddressAndNotesWidget(icon: AppIcons.icEdit, title: 'Edit Address'),
+                              _buildAddressAndNotesWidget(icon: AppIcons.icNotes, title: 'Add Notes'),
+                            ],
+                          ),
+                          Divider(color: AppColors.lightWhiteColor,)
+                        ],
                       )
                     ],
                   ),
@@ -57,6 +82,25 @@ class OrderScreen extends StatelessWidget {
           }
         );
       }
+    );
+  }
+
+  Widget _buildAddressAndNotesWidget({required String icon, required String title}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: .circular(99),
+          border: .all(color: AppColors.greyColor)
+      ),
+      padding: .symmetric(vertical: 6, horizontal: 12),
+      child: Row(
+        spacing: 4,
+        children: [
+          SvgPicture.asset(icon, height: 14,),
+          Text(title,
+            style: AppTextStyles.regularTextStyle.copyWith(fontSize: 12),)
+        ],
+      ),
     );
   }
 

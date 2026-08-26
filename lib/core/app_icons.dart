@@ -19,5 +19,9 @@ class AppIcons {
   static const icNotification = '${_iconsPath}ic_notifications.svg';
   static const icSearch = '${_iconsPath}ic_search.svg';
   static const icFilter = '${_iconsPath}ic_filter.svg';
+  static const icEdit = '${_iconsPath}ic_edit.svg';
+  static const icNotes = '${_iconsPath}ic_notes.svg';
+  static const icDiscount = '${_iconsPath}ic_discount.svg';
+  static const icWallet = '${_iconsPath}ic_wallet.svg';
 
 }
