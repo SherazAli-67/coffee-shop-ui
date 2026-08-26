@@ -12,16 +12,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _buildHeaderWidget(),
-        ),
-        Expanded(
-            flex: 3,
-            child: _buildContentWidget()),
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: _buildHeaderWidget(),
+          ),
+          Expanded(
+              flex: 3,
+              child: _buildContentWidget()),
+        ],
+      ),
     );
   }
 
