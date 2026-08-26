@@ -7,10 +7,18 @@ import 'package:coffee_app/presentation/widgets/primary_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CoffeeDetailScreen extends StatelessWidget{
+class CoffeeDetailScreen extends StatefulWidget{
   const CoffeeDetailScreen({super.key, required this.coffee});
 
   final CoffeeModel coffee;
+
+  @override
+  State<CoffeeDetailScreen> createState() => _CoffeeDetailScreenState();
+}
+
+class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
+  
+  String _selectedSize = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +42,12 @@ class CoffeeDetailScreen extends StatelessWidget{
                   Padding(
                     padding: const .only(top: 8.0),
                     child: Hero(
-                      tag: coffee.id,
+                      tag: widget.coffee.id,
                       child: ClipRRect(
                         borderRadius: .circular(16),
                         child: SizedBox(
                             width: .infinity,
-                            child: Image.asset(coffee.coffee, fit: .cover,)),
+                            child: Image.asset(widget.coffee.coffee, fit: .cover,)),
                       ),
                     ),
                   ),
@@ -53,15 +61,15 @@ class CoffeeDetailScreen extends StatelessWidget{
                             spacing: 4,
                             crossAxisAlignment: .start,
                             children: [
-                              Text(coffee.title, style: AppTextStyles.btnTextStyle.copyWith(fontSize: 20),),
-                              Text(coffee.subtitle, style: AppTextStyles.regularTextStyle.copyWith(fontSize: 12, color: AppColors.greyColor),),
+                              Text(widget.coffee.title, style: AppTextStyles.btnTextStyle.copyWith(fontSize: 20),),
+                              Text(widget.coffee.subtitle, style: AppTextStyles.regularTextStyle.copyWith(fontSize: 12, color: AppColors.greyColor),),
                               Row(
                                 children: [
                                   Icon(
                                     Icons.star_rate_rounded, color: AppColors.ratingYellowColor, size: 20
                                   ),
                                   RichText(text: TextSpan(
-                                    text: '${coffee.rating} ',
+                                    text: '${widget.coffee.rating} ',
                                     style: AppTextStyles.btnTextStyle.copyWith(fontFamily: StringConst.appFontFamily, color: AppColors.blackColor),
                                     children: [
                                       TextSpan(
@@ -135,7 +143,7 @@ class CoffeeDetailScreen extends StatelessWidget{
                   crossAxisAlignment: .start,
                   children: [
                     Text("Price", style: AppTextStyles.regularTextStyle,),
-                    Text('\$ ${coffee.price}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
+                    Text('\$ ${widget.coffee.price}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
                   ],
                 ),
                 Expanded(child: PrimaryBtn(btnText: "Buy Now"))
@@ -148,13 +156,18 @@ class CoffeeDetailScreen extends StatelessWidget{
   }
 
   Widget _buildSizeItemWidget({required String size}) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: .circular(12),
-          border: .all(color: AppColors.lightWhiteColor)
+    bool isSelected = _selectedSize == size;
+    return GestureDetector(
+      onTap: ()=> onSelectSizeTap(size),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: .circular(12),
+            border: .all(color: isSelected ? AppColors.primaryColor : AppColors.lightWhiteColor),
+          color: isSelected ? AppColors.primaryColor.withValues(alpha: 0.1) : null
+        ),
+        padding: .symmetric(vertical: 10),
+        child: Text(size, style: AppTextStyles.regularTextStyle, textAlign: .center,),
       ),
-      padding: .symmetric(vertical: 10),
-      child: Text(size, style: AppTextStyles.regularTextStyle, textAlign: .center,),
     );
   }
 
@@ -168,4 +181,6 @@ class CoffeeDetailScreen extends StatelessWidget{
       child: Image.asset(icon, height: 30, width: 30),
     );
   }
+  
+  void onSelectSizeTap(String size) => setState(() => _selectedSize = size);
 }
