@@ -4,8 +4,10 @@ import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/app_textstyles.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
 import 'package:coffee_app/presentation/widgets/primary_btn.dart';
+import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CoffeeDetailScreen extends StatefulWidget{
   const CoffeeDetailScreen({super.key, required this.coffee});
@@ -146,7 +148,7 @@ class _CoffeeDetailScreenState extends State<CoffeeDetailScreen> {
                     Text('\$ ${widget.coffee.price}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
                   ],
                 ),
-                Expanded(child: PrimaryBtn(btnText: "Buy Now"))
+                Expanded(child: PrimaryBtn(btnText: "Buy Now", onTap: ()=> context.push(NamedRoutes.orderScreen.routeName, extra: widget.coffee),))
               ],
             ),
           ),)
