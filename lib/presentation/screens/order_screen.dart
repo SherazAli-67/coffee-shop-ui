@@ -20,68 +20,122 @@ class OrderScreen extends StatelessWidget {
           builder: (_, provider, _) {
             return Scaffold(
               body: SafeArea(
-                child: Padding(
-                  padding: .symmetric(horizontal: 24, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: .start,
-                    spacing: 24,
-                    children: [
-                      Row(
-                        mainAxisAlignment: .spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () => Navigator.pop(context),
-                            child: Icon(Icons.arrow_back_ios_new),
-                          ),
-                          Text("Order", style: AppTextStyles.btnTextStyle),
-                          const SizedBox(width: 40),
-                        ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.lightWhiteColor,
-                          borderRadius: .circular(12)
-                        ),
-                        padding: .all(4),
-                        child: Row(
-                          children: [
-                            Expanded(child: _buildOrderType(title: 'Deliver', isSelected: provider.isDeliverOrder, onTap: ()=> provider.changeDeliveryType('Deliver'))),
-                            Expanded(child: _buildOrderType(title: 'Pick Up', isSelected: !provider.isDeliverOrder, onTap: ()=> provider.changeDeliveryType('Pick Up')))
-
-                          ],
-                        ),
-                      ),
-                      Column(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: .symmetric(horizontal: 24, vertical: 20),
+                      child: Column(
                         crossAxisAlignment: .start,
-                        spacing: 16,
+                        spacing: 24,
                         children: [
-                          Text("Delivery Address", style: AppTextStyles.btnTextStyle,),
+                          Row(
+                            mainAxisAlignment: .spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () => Navigator.pop(context),
+                                child: Icon(Icons.arrow_back_ios_new),
+                              ),
+                              Text("Order", style: AppTextStyles.btnTextStyle),
+                              const SizedBox(width: 40),
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.lightWhiteColor,
+                              borderRadius: .circular(12)
+                            ),
+                            padding: .all(4),
+                            child: Row(
+                              children: [
+                                Expanded(child: _buildOrderType(title: 'Deliver', isSelected: provider.isDeliverOrder, onTap: ()=> provider.changeDeliveryType('Deliver'))),
+                                Expanded(child: _buildOrderType(title: 'Pick Up', isSelected: !provider.isDeliverOrder, onTap: ()=> provider.changeDeliveryType('Pick Up')))
+
+                              ],
+                            ),
+                          ),
                           Column(
                             crossAxisAlignment: .start,
-                            spacing: 4,
+                            spacing: 16,
                             children: [
-                              Text("Sheraz Ali", style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
-                              Text("Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.greyColor),)
+                              Text("Delivery Address", style: AppTextStyles.btnTextStyle,),
+                              Column(
+                                crossAxisAlignment: .start,
+                                spacing: 4,
+                                children: [
+                                  Text("Sheraz Ali", style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
+                                  Text("Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.greyColor),)
+                                ],
+                              ),
+                              Row(
+                                spacing: 8,
+                                children: [
+                                  _buildAddressAndNotesWidget(icon: AppIcons.icEdit, title: 'Edit Address'),
+                                  _buildAddressAndNotesWidget(icon: AppIcons.icNotes, title: 'Add Notes'),
+                                ],
+                              ),
+                              Divider(color: AppColors.lightWhiteColor,),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      spacing: 16,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: .circular(8),
+                                          child: Image.asset(coffee.coffee, height: 55, width: 55,),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: .start,
+                                          children: [
+                                            Text(coffee.title, style: AppTextStyles.btnTextStyle,),
+                                            Text(coffee.subtitle, style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.greyColor, fontSize: 12),)
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    spacing: 16,
+                                    children: [
+                                      _buildIncreaseDecreaseBtn(onTap: provider.onDecreaseQuantityTap),
+                                      Text('${provider.quantity}', style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .w600),),
+                                      _buildIncreaseDecreaseBtn(onTap: provider.onIncreaseQuantityTap, isIncrease: true),
+                                    ],
+                                  )
+
+                                ],
+                              )
                             ],
-                          ),
-                          Row(
-                            spacing: 8,
-                            children: [
-                              _buildAddressAndNotesWidget(icon: AppIcons.icEdit, title: 'Edit Address'),
-                              _buildAddressAndNotesWidget(icon: AppIcons.icNotes, title: 'Add Notes'),
-                            ],
-                          ),
-                          Divider(color: AppColors.lightWhiteColor,)
+                          )
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Container(
+                      height: 2,
+                      width: .infinity,
+                      color: AppColors.borderColor,
+                    )
+                  ],
                 ),
               ),
             );
           }
         );
       }
+    );
+  }
+
+  Widget _buildIncreaseDecreaseBtn({bool isIncrease = false, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            shape: .circle,
+            border: .all(color: AppColors.borderColor)
+        ),
+        child: Icon(isIncrease ? Icons.add_rounded : Icons.remove, color: AppColors.greyColor, size: 16,),
+      ),
     );
   }
 

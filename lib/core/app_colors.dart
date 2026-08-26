@@ -11,4 +11,5 @@ class AppColors {
   static const lightWhiteColor = Color(0xffEDEDED);
   static const ratingYellowColor = Color(0xffFBBE21);
   static const scaffoldBgColor = Color(0xffF9F9F9);
+  static const borderColor = Color(0xffF9F2ED);
 }
