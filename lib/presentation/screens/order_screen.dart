@@ -1,6 +1,7 @@
 import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
+import 'package:coffee_app/presentation/widgets/primary_btn.dart';
 import 'package:coffee_app/providers/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -114,7 +115,99 @@ class OrderScreen extends StatelessWidget {
                       height: 2,
                       width: .infinity,
                       color: AppColors.borderColor,
-                    )
+                    ),
+                    Padding(padding: .symmetric(horizontal: 24, vertical: 16), child: Column(
+                      spacing: 24,
+                      crossAxisAlignment: .start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: .circular(16)
+                          ),
+                          padding: .symmetric(horizontal: 16, vertical: 17.5),
+                          child: Row(
+                            spacing: 16,
+                            children: [
+                              Expanded(child: Row(
+                                spacing: 16,
+                                children: [
+                                  SvgPicture.asset(AppIcons.icDiscount),
+                                  Text("1 Discount is Applies", style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .w600),)
+                                ],
+                              )),
+                              Icon(Icons.arrow_forward_ios_sharp)
+                            ],
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: .start,
+                          spacing: 16,
+                          children: [
+                            Text("Payment Summary", style: AppTextStyles.btnTextStyle,),
+                            Column(
+                              crossAxisAlignment: .start,
+                              spacing: 8,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: .spaceBetween,
+                                  children: [
+                                    Text("Price", style: AppTextStyles.regularTextStyle,),
+                                    Text('\$ ${coffee.price}', style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: .spaceBetween,
+                                  children: [
+                                    Text("Delivery Fee", style: AppTextStyles.regularTextStyle,),
+                                    Row(
+                                      spacing: 8,
+                                      children: [
+                                        Text("\$ 2.0", style: AppTextStyles.regularTextStyle.copyWith(decoration: .lineThrough),),
+                                        Text('\$ 1.0', style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
+                                      ],
+                                    )
+                                  ],
+                                ),
+
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),),
+                    const Spacer(),
+                    Padding(padding: .only(top: 8), child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white
+                      ),
+                      padding: .symmetric(horizontal: 24, vertical: 20),
+                      child: Column(
+                        spacing: 8,
+                        children: [
+                          Row(
+                            spacing: 16,
+                            children: [
+                              SvgPicture.asset(AppIcons.icWallet),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: .start,
+                                  children: [
+                                    Text("Cash/Wallet", style: AppTextStyles.regularTextStyle,),
+                                    Text('\$ ${coffee.price + 1.0}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.keyboard_arrow_down)
+                            ],
+                          ),
+                          SizedBox(
+                            width: .infinity,
+                            child: PrimaryBtn(btnText: "Order"),
+                          )
+                        ],
+                      ),
+                    ),)
                   ],
                 ),
               ),
