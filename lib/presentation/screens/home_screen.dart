@@ -1,3 +1,4 @@
+import 'package:coffee_app/constants/string_const.dart';
 import 'package:coffee_app/core/app_colors.dart';
 import 'package:coffee_app/core/app_data.dart';
 import 'package:coffee_app/core/app_gradients.dart';
@@ -217,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         child: AnimatedDefaultTextStyle(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOutCubic,
-          style: AppTextStyles.regularTextStyle.copyWith(color: isSelected ? Colors.white : AppColors.gradientBlackColor2, fontWeight: isSelected ? .w600 : .w400),
+          style: AppTextStyles.regularTextStyle.copyWith(color: isSelected ? Colors.white : AppColors.gradientBlackColor2, fontWeight: isSelected ? .w600 : .w400, fontFamily: StringConst.appFontFamily),
           child: Text(category),
         ),
       ),
