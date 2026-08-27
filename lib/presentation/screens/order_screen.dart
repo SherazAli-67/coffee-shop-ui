@@ -155,7 +155,7 @@ class OrderScreen extends StatelessWidget {
                                   mainAxisAlignment: .spaceBetween,
                                   children: [
                                     Text("Price", style: AppTextStyles.regularTextStyle,),
-                                    Text('\$ ${coffee.price}', style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
+                                    Text('\$ ${coffee.price * provider.quantity}', style: AppTextStyles.regularTextStyle.copyWith(fontWeight: .bold),),
                                   ],
                                 ),
                                 Row(
@@ -196,7 +196,7 @@ class OrderScreen extends StatelessWidget {
                                   crossAxisAlignment: .start,
                                   children: [
                                     Text("Cash/Wallet", style: AppTextStyles.regularTextStyle,),
-                                    Text('\$ ${coffee.price + 1.0}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
+                                    Text('\$ ${coffee.price  * provider.quantity + 1.0}', style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.primaryColor),)
                                   ],
                                 ),
                               ),
