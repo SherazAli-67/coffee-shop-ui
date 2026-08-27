@@ -9,7 +9,7 @@ import '../presentation/screens/main_menu_page.dart';
 import '../presentation/screens/welcome_screen.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: NamedRoutes.welcome.routeName,
+  initialLocation: NamedRoutes.home.routeName,
   routes: [
     GoRoute(path: NamedRoutes.welcome.routeName, builder: (_, state) => WelcomeScreen()),
     StatefulShellRoute.indexedStack(

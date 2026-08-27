@@ -9,7 +9,7 @@ class AppData {
   static List<CoffeeModel> get coffeesList => [
     CoffeeModel(id: '1', title: 'Caffe Mocha', coffee: AppIcons.coffee1, subtitle: 'Deep Foam', price: 4.53, rating: 4.8),
     CoffeeModel(id: '2', title: 'Flat White', coffee: AppIcons.coffee2, subtitle: 'Espresso', price: 3.53, rating: 4.8),
-    CoffeeModel(id: '3', title: 'Mocha Fusi', coffee: AppIcons.coffee1, subtitle: 'Ice/Hot', price: 7.53, rating: 4.8),
-    CoffeeModel(id: '4', title: 'Caffe Panna', coffee: AppIcons.coffee1, subtitle: 'Deep Foam', price: 5.53, rating: 4.8),
+    CoffeeModel(id: '3', title: 'Mocha Fusi', coffee: AppIcons.coffee3, subtitle: 'Ice/Hot', price: 7.53, rating: 4.8),
+    CoffeeModel(id: '4', title: 'Caffe Panna', coffee: AppIcons.coffee4, subtitle: 'Deep Foam', price: 5.53, rating: 4.8),
   ];
 }
