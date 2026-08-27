@@ -2,6 +2,7 @@ import 'package:coffee_app/core/models/coffee_model.dart';
 import 'package:coffee_app/presentation/screens/coffee_detail_screen.dart';
 import 'package:coffee_app/presentation/screens/home_screen.dart';
 import 'package:coffee_app/presentation/screens/order_screen.dart';
+import 'package:coffee_app/presentation/screens/tracking_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../presentation/screens/main_menu_page.dart';
@@ -51,6 +52,7 @@ GoRouter router = GoRouter(
 
     GoRoute(path: NamedRoutes.coffeeDetail.routeName, builder: (_, state) => CoffeeDetailScreen(coffee: state.extra as CoffeeModel)),
     GoRoute(path: NamedRoutes.orderScreen.routeName, builder: (_, state) => OrderScreen(coffee: state.extra as CoffeeModel)),
+    GoRoute(path: NamedRoutes.trackingOrder.routeName, builder: (_, state) => TrackingOrderScreen()),
 
   ],
 );
@@ -62,7 +64,8 @@ enum NamedRoutes {
   shoppingCart('/cart'),
   notifications('/notifications'),
   coffeeDetail('/coffee-detail'),
-  orderScreen('/order')
+  orderScreen('/order'),
+  trackingOrder('/tracking-order')
   ;
 
   final String routeName;

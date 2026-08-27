@@ -12,4 +12,5 @@ class AppColors {
   static const ratingYellowColor = Color(0xffFBBE21);
   static const scaffoldBgColor = Color(0xffF9F9F9);
   static const borderColor = Color(0xffF9F2ED);
+  static const progressGreenColor = Color(0xff36C07E);
 }

@@ -3,8 +3,10 @@ import 'package:coffee_app/core/app_icons.dart';
 import 'package:coffee_app/core/models/coffee_model.dart';
 import 'package:coffee_app/presentation/widgets/primary_btn.dart';
 import 'package:coffee_app/providers/order_provider.dart';
+import 'package:coffee_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/app_textstyles.dart';
@@ -203,7 +205,7 @@ class OrderScreen extends StatelessWidget {
                           ),
                           SizedBox(
                             width: .infinity,
-                            child: PrimaryBtn(btnText: "Order"),
+                            child: PrimaryBtn(btnText: "Order", onTap: ()=> context.push(NamedRoutes.trackingOrder.routeName),),
                           )
                         ],
                       ),
